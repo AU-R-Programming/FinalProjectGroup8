@@ -66,18 +66,18 @@ return(list(beta = beta.hat, sigma2 = sigma2.hat,variance_beta = var.beta, ci = 
 #Set up the plots by first using ggplot2
 library(ggplot2)
 
+plot(my_lm)
+
 #define fitted values
-#STRUGGLING HERE
+
 fitted<-X*bet.hat
 ```
 ```{r}
 #Make a qq plot of residuals
-#STRUGGLING HERE TOO
-qqplot(resid)
+
 ```
 
 ``` {r}
 #Make a histogram (or density) of residuals
-#YEAH NOTHING WORKS-I AM DEFINITELY THINKING ABOUT THIS THE WRONG WAY
-hist(resid)
+
 ```
