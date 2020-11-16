@@ -5,7 +5,7 @@ y<-forestfires$Y
 x<-forestfires[,c("X","DC")]
 alpha<-0.05
 
-my_lm(yy,xx,0.05)
+my_lm(y,x,0.05)
 
 
 # The first part of the code is from section 6.4 of the book
