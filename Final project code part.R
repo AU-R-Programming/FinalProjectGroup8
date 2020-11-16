@@ -60,7 +60,7 @@ ylab="sample quantiles")
 
 ##Histogram (or density) of residuals
 densi<-density(resid)
-fig3<-plot(resid,densi,
+fig3<-plot(densi,
 main="Histogram (or density) of residuals",
 xlab="residual",
 ylab="density")
@@ -71,14 +71,15 @@ MSPE<- (1/n)*t(resid)%*%resid
 
 ######################################################
 #F-test
-yaverge<-mean(y)
+yaverage<-mean(y)
 ybar<-rep(yaverage, n)
 SSM<-t(y.hat-ybar)%*%(y.hat-ybar)
+resid<-as.vector(resid)
 SSE<-t(resid)%*%resid
 MSM<-SSM/(p-1)
-MSE<-SSE/df
+MSE<-SSE/(n-p)
 Fstar<-MSM/MSE
-Probofftest<-pf(fstar, p-1, df, lower.tail = FALSE)
+Probofftest<-pf(Fstar, p-1, n-p, lower.tail = FALSE)
 
 # Return all estimated values
 return(list( ci = ci.beta,fig1,fig2,fig3,MSPE=MSPE,
