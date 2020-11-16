@@ -27,15 +27,11 @@ var.beta <- sigma2.hat*solve(t(x)%*%x)
   ci.beta <- c(beta.hat - qnorm(p = quant)*sqrt(var.beta), beta.hat + 
                  qnorm(p = quant)*sqrt(var.beta))
   
-  # Return all estimated values
-  return(list(beta = beta.hat, sigma2 = sigma2.hat, 
-              variance_beta = var.beta, ci = ci.beta))
-}
 ######################################################
 #plot
 ##residual vs fitted values
 y.hat <- x%*%beta.hat
-plot(y.hat, resid,
+fig1<-plot(y.hat, resid,
 main="residual vs fitted values",
 xlab="fitted values",
 ylab="residual")
@@ -44,14 +40,14 @@ ylab="residual")
 nr<- length(resid)
 zpercent<-1/nr
 z<-qnorm(p = zpercent*(1:nr))
-plot(z,resid,
+fig2<-plot(z,resid,
 main="qq-plot of residuals",
 xlab="theoretical quantiles",
 ylab="sample quantiles")
 
 ##Histogram (or density) of residuals
 densi<-density(resid)
-plot(resid,densi,
+fig3<-plot(resid,densi,
 main="Histogram (or density) of residuals",
 xlab="residual",
 ylab="density")
@@ -69,6 +65,9 @@ MSE<-SSE/df
 Fstar<-MSM/MSE
 Probofftest<-pf(fstar, p-1, df, lower.tail = FALSE)
 
-
+# Return all estimated values
+return(list( ci = ci.beta,fig1,fig2,fig3,MSPE=MSPE,
+             Ftest=Fstar,Probability=Probofftest))
+}
 
 
