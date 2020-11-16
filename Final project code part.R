@@ -1,0 +1,74 @@
+# The first part of the code is from section 6.4 of the book
+# linear regression model
+my_lm = function(y, x, alpha) {
+  
+# Make sure data formats are appropriate
+y <- as.vector(y)
+x <- as.matrix(x)
+  
+# Define parameters
+n <- length(y)
+p <- dim(x)[2]
+df <- n - p
+  
+# Estimate beta through Eq. (6.1)
+beta.hat <- solve(t(x)%*%x)%*%t(x)%*%y
+  
+# Estimate of the residual variance (sigma2) from Eq. (6.3)
+# Compute residuals(n*1)
+resid <- y - x%*%as.matrix(beta.hat) 
+sigma2.hat <- (1/df)*t(resid)%*%resid
+  
+# Estimate of the variance of the estimated beta from Eq. (6.2)
+var.beta <- sigma2.hat*solve(t(x)%*%x)
+##########################################################  
+## Estimate of the confidence interval based on alpha
+  quant <- 1 - alpha/2
+  ci.beta <- c(beta.hat - qnorm(p = quant)*sqrt(var.beta), beta.hat + 
+                 qnorm(p = quant)*sqrt(var.beta))
+  
+  # Return all estimated values
+  return(list(beta = beta.hat, sigma2 = sigma2.hat, 
+              variance_beta = var.beta, ci = ci.beta))
+}
+######################################################
+#plot
+##residual vs fitted values
+y.hat <- x%*%beta.hat
+plot(y.hat, resid,
+main="residual vs fitted values",
+xlab="fitted values",
+ylab="residual")
+
+##qq-plot of residuals
+nr<- length(resid)
+zpercent<-1/nr
+z<-qnorm(p = zpercent*(1:nr))
+plot(z,resid,
+main="qq-plot of residuals",
+xlab="theoretical quantiles",
+ylab="sample quantiles")
+
+##Histogram (or density) of residuals
+densi<-density(resid)
+plot(resid,densi,
+main="Histogram (or density) of residuals",
+xlab="residual",
+ylab="density")
+######################################################
+#Mean Square Prediction Error (MSPE)
+MSPE<- (1/n)*t(resid)%*%resid
+######################################################
+#F-test
+yaverge<-mean(y)
+ybar<-rep(yaverage, n)
+SSM<-t(y.hat-ybar)%*%(y.hat-ybar)
+SSE<-t(resid)%*%resid
+MSM<-SSM/(p-1)
+MSE<-SSE/df
+Fstar<-MSM/MSE
+Probofftest<-pf(fstar, p-1, df, lower.tail = FALSE)
+
+
+
+
