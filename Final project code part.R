@@ -82,7 +82,7 @@ Fstar<-MSM/MSE
 Probofftest<-pf(Fstar, p-1, n-p, lower.tail = FALSE)
 
 # Return all estimated values
-return(list( ci = ci.beta,fig1,fig2,fig3,MSPE=MSPE,
+return(list( ci = ci.beta,MSPE=MSPE,
              Ftest=Fstar,Probability=Probofftest))
 
 }
