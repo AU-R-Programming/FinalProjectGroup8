@@ -4,7 +4,7 @@ y<-forestfires$Y
 x<-forestfires[,c("X","DC")]
 alpha<-0.05
 
-my_lm(y,x,0.05)
+my_lm(y,x,0.05, "bootstrap")
 
 #' @title Linear Regression Model
 #' @description Perform a linear regression based on a user input alpha value for the confidence intervals and
@@ -73,8 +73,7 @@ if (approach=="bootstrap")
   ci.beta<-t(ci.beta)
   ci.beta <- as.data.frame(ci.beta)
   colnames(ci.beta) <- c("low", "high")
-  }
-else{
+  }else{
   quant <- 1 - alpha/2
   ci.beta <- cbind(beta.hat - qnorm(p = quant)*sqrt(var.beta), beta.hat +
                  qnorm(p = quant)*sqrt(var.beta))
@@ -123,7 +122,10 @@ Fstar<-MSM/MSE
 Probofftest<-pf(Fstar, p-1, n-p, lower.tail = FALSE)
 
 # Return all estimated values
-return(list(  ci = ci.beta,
+return(list( beta = beta.hat,
+             sigma2 = sigma2.hat,
+             variance_beta = var.beta,
+             ci = ci.beta,
              MSPE=MSPE,Ftest=Fstar,
              Probability=Probofftest))
 }
