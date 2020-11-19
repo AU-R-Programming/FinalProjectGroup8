@@ -1,8 +1,4 @@
 
-<<<<<<< HEAD
-=======
-my_lm(y,x,0.05, "bootstrap")
->>>>>>> b387720742fcfa0a2f26c70dccb235a62230c2b8
 
 #' @title Linear Regression Model
 #' @description Perform a linear regression based on a user input alpha value for the confidence intervals and
@@ -16,8 +12,8 @@ my_lm(y,x,0.05, "bootstrap")
 #' @return A /code {list}  which returns the following attributes:
 #' \describe {
 #'      \{ci.beta}{The confidence intervals}
-#'      \{sigma2.hat}{The variance of the model}
-#'      \{var.beta}{Variance of beta}
+#'      \{sigma2.hat}{The standard deviation}
+#'      \{var.beta}{Variance}
 #'      \{MSPE}{The mean square prediction error}
 #'      \{Fstar}{An F Test}
 #'      \{Proboftest}{The probability or p-value of test}
@@ -66,11 +62,7 @@ if (approach=="bootstrap")
   ci.beta<-t(ci.beta)
   ci.beta <- as.data.frame(ci.beta)
   colnames(ci.beta) <- c("low", "high")
-<<<<<<< HEAD
 }else{
-=======
-  }else{
->>>>>>> b387720742fcfa0a2f26c70dccb235a62230c2b8
   quant <- 1 - alpha/2
   ci.beta <- cbind(beta.hat - qnorm(p = quant)*sqrt(var.beta), beta.hat +
                      qnorm(p = quant)*sqrt(var.beta))
@@ -119,10 +111,7 @@ Fstar<-MSM/MSE
 Probofftest<-pf(Fstar, p-1, n-p, lower.tail = FALSE)
 
 # Return all estimated values
-return(list( beta = beta.hat,
-             sigma2 = sigma2.hat,
-             variance_beta = var.beta,
-             ci = ci.beta,
+return(list(  ci = ci.beta,
              MSPE=MSPE,Ftest=Fstar,
              Probability=Probofftest))
 }
