@@ -12,8 +12,8 @@
 #' @return A /code {list}  which returns the following attributes:
 #' \describe {
 #'      \{ci.beta}{The confidence intervals}
-#'      \{sigma2.hat}{The standard deviation}
-#'      \{var.beta}{Variance}
+#'      \{sigma2.hat}{The variance of the model}
+#'      \{var.beta}{Variance of beta}
 #'      \{MSPE}{The mean square prediction error}
 #'      \{Fstar}{An F Test}
 #'      \{Proboftest}{The probability or p-value of test}
@@ -21,8 +21,8 @@
 #' @importFrom ggplot2
 #' @export
 #' @examples
-#' my_lm (y= c(18, 45, 22), x=cbind(78,98,32), alpha=.01)
-#' my_lm (y= c(458, 32, 99) x=cbind(23,89,102), alpha=.10)
+#' my_lm (y= c(18, 45, 22), x=cbind(c(78,98,32),c(71,88,40)), alpha=.01)
+#' my_lm (y= c(458, 32, 99) x=cbind(c(23,89,102)c(33,95,130)), alpha=.10, approach=="bootstrap")
 
 
 my_lm = function(y, x, alpha, approach) {
@@ -111,7 +111,10 @@ Fstar<-MSM/MSE
 Probofftest<-pf(Fstar, p-1, n-p, lower.tail = FALSE)
 
 # Return all estimated values
-return(list(  ci = ci.beta,
+return(list( beta = beta.hat,
+             sigma2 = sigma2.hat,
+             variance_beta = var.beta, 
+             ci = ci.beta,
              MSPE=MSPE,Ftest=Fstar,
              Probability=Probofftest))
 }
