@@ -21,9 +21,8 @@
 #' @importFrom graphics plot
 #' @export
 #' @examples
-#' my_lm (y= c(18, 45, 22), x=cbind(78,98,32), alpha=.01)
-#' my_lm (y= c(458, 32, 99) x=cbind(23,89,102), alpha=.10)
-
+#' my_lm (y= c(18, 45, 22), x=cbind(rbinom(n, size = 22), rnorm(n, 42, 65))), alpha = 0.01, approach =  bootstrap
+#' my_lm (y= c(458, 32, 99) x=cbind(rbinom (n, size = 45), rnorm(n, 85, 22))), alpha = 0.10, approach = asymptotic
 
 my_lm = function(y, x, alpha, approach) {
 
@@ -115,5 +114,4 @@ return(list(  ci = ci.beta,
              MSPE=MSPE,Ftest=Fstar,
              Probability=Probofftest))
 }
-
 
