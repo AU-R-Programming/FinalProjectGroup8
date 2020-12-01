@@ -33,6 +33,6 @@ The package returns the mean square prediction error (MSPE), an F-test, and crea
 residual vs. fitted values, and a histogram of the residuals.
 }
 \examples{
-my_lm (y= c(18, 45, 22), x=cbind(rbinom(n, size = 22), rnorm(n, 42, 65))), alpha = 0.01, approach =  bootstrap
-my_lm (y= c(458, 32, 99) x=cbind(rbinom (n, size = 45), rnorm(n, 85, 22))), alpha = 0.10, approach = asymptotic
+my_lm (y= c(18, 45, 22), x=cbind(rbinom(3, size = 22,prob=0.5), rnorm(3, 42, 65),rnorm(3, 20, 20)), alpha = 0.01, approach =  bootstrap)
+my_lm (y= c(458, 32, 99) x=cbind(rbinom (3, size = 45,prob=0.1), rnorm(3, 85, 22)), alpha = 0.10, approach = asymptotic)
 }
