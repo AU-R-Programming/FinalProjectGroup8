@@ -115,3 +115,4 @@ return(list(  ci = ci.beta,
              Probability=Probofftest))
 }
 
+
