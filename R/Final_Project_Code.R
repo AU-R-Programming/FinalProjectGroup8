@@ -21,8 +21,10 @@
 #' @importFrom graphics plot
 #' @export
 #' @examples
-#' my_lm (y= x%*%beta + rnorm (1000, sd = 3), x=cbind(rbinom(3, size = 22,prob=0.5), rnorm(3, 42, 65),rnorm(3, 20, 20)), alpha = 0.01, approach =  "bootstrap")
-#' my_lm (y= x%*%beta + rnorm (1000, sd = 3), x=cbind(rbinom (3, size = 45,prob=0.1), rnorm(3, 85, 22)), alpha = 0.10, approach = "asymptotic")
+#' n=20
+#' my_lm (y= rbinom(n, size = 15,prob=0.5), x=cbind(rbinom(n, size = 22,prob=0.5), rnorm(n, 42, 65),rnorm(n, 20, 20)), alpha = 0.01, approach =  "bootstrap")
+#' n=30
+#' my_lm (y= rnorm(n, 15, 20), x=cbind(rbinom (n, size = 45,prob=0.1), rnorm(n, 85, 22)), alpha = 0.10, approach = "asymptotic")
 
 my_lm = function(y, x, alpha, approach) {
 
