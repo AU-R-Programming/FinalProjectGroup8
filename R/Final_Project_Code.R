@@ -7,7 +7,7 @@
 #' residual vs. fitted values, and a histogram of the residuals.
 #' @param y The \code{vector} dependent variable
 #' @param x The \code{matrix} independent variable
-#' @param alpha The \code{numeric} significance devlevel input by the user to estimate the confidence intervals
+#' @param alpha The \code{numeric} significance level input by the user to estimate the confidence intervals
 #' @param approach The \code{character} allows the user to choose bootstrap or asymptotic approach
 #' @return A \code{list} which returns the following attributes:
 #' \describe{
