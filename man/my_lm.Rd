@@ -11,7 +11,7 @@ my_lm(y, x, alpha, approach)
 
 \item{x}{The \code{matrix} independent variable}
 
-\item{alpha}{The \code{numeric} significance devlevel input by the user to estimate the confidence intervals}
+\item{alpha}{The \code{numeric} significance level input by the user to estimate the confidence intervals}
 
 \item{approach}{The \code{character} allows the user to choose bootstrap or asymptotic approach}
 }
@@ -34,7 +34,7 @@ residual vs. fitted values, and a histogram of the residuals.
 }
 \examples{
 n=20
-my_lm (y= rbinom(n, size = 15,prob=0.5), x=cbind(rbinom(n, size = 22,prob=0.5), rnorm(n, 42, 65),rnorm(n, 20, 20)), alpha = 0.01, approach =  "bootstrap")
+my_lm (y= rbinom(n, size = 15,prob=0.5), x=cbind(rbinom(n, size = 22,prob=0.5), rnorm(n, 0, 1),rnorm(n, 20, 20)), alpha = 0.01, approach =  "bootstrap")
 n=30
-my_lm (y= rnorm(n, 15, 20), x=cbind(rbinom (n, size = 45,prob=0.1), rnorm(n, 85, 22)), alpha = 0.10, approach = "asymptotic")
+my_lm (y= rnorm(n, 15, 20), x=cbind(rbinom (n, size = 45,prob=0.1), rnorm(n, 0, 1)), alpha = 0.10, approach = "asymptotic")
 }
