@@ -1,6 +1,6 @@
 ---
 title: "The linreg function"
-author: "Lynn & Yu"
+author: "Lynn, Yu, & Jacobo"
 date: "12/2/2020"
 output: html_document
 ---
@@ -11,15 +11,15 @@ knitr::opts_chunk$set(echo = TRUE)
 
 ## What Does the Linreg function do?
 
-The linreg function can be found in the GitHub repository AU-R-Programming/FinalProjectGroup8
+* The linreg function can be found in the GitHub repository AU-R-Programming/FinalProjectGroup8
 
-The function appears as my_lm in the R code and is accompanied by a help file:
+* The function appears as my_lm in the R code and is accompanied by a help file:
 my_lm = function(y, x, alpha, approach)
 
-This function allows the user to perform a linear regression with their own data. The user can select an alpha value and whether to use a bootstrap or asymptotic approach.
+* This function allows the user to perform a linear regression with their own data. The user can select an alpha value and whether to use a bootstrap or asymptotic approach.
 
-The function returns the confidence intervals for beta, a Mean Square Prediction Error (MPSE) in matrix form, 
-an F-test and p-value. In addition the function outputs plots for the residual vs. fitted values, a qq-plot of residuals and a histogram (density) of the resideuals. 
+* The function returns the confidence intervals for beta, a Mean Square Prediction Error (MPSE) in matrix form, 
+an F-test and p-value. In addition the function outputs plots for the residual vs. fitted values, a qq-plot of residuals and a histogram (density) of the residuals. 
 
 ## How to Use the Function
 
@@ -29,9 +29,11 @@ The linreg function appears in the format:  my_lm = function(y, x, alpha, approa
 
 After attaching the dataset, the user would first state the sample size, then set up the y and x values:
 
->n<-517
->y<-forestfires$Y
->x<-forestfires[,c("X","DC")]
+
+n<-517
+y<-forestfires$Y
+x<-forestfires[,c("X","DC")]
+
 
 Next they would select the alpha value:
 
