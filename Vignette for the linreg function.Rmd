@@ -13,44 +13,51 @@ knitr::opts_chunk$set(echo = TRUE)
 
 * The linreg function can be found in the GitHub repository AU-R-Programming/FinalProjectGroup8
 
-* The function appears as my_lm in the R code and is accompanied by a help file:
-my_lm = function(y, x, alpha, approach)
+* The function appears as my_lm in the R code file and is accompanied by a help file:
+my_lm = function(y, x, alpha, approach) which can be accessed by any user.
 
-* This function allows the user to perform a linear regression with their own data. The user can select an alpha value and whether to use a bootstrap or asymptotic approach.
+* This function allows the user to perform a linear regression with their own data. The user can select an alpha value and whether to use a bootstrap or asymptotic approach. 
 
 * The function returns the confidence intervals for beta, a Mean Square Prediction Error (MPSE) in matrix form, 
 an F-test and p-value. In addition the function outputs plots for the residual vs. fitted values, a qq-plot of residuals and a histogram (density) of the residuals. 
 
-## How to Use the Function
+## How do you use the Function?
 
-We are using an example dataset which can be downloaded from our R package called forestfires.csv.
+* We are using an example dataset which can be downloaded from our R package called forestfires.csv.
 
-The linreg function appears in the format:  my_lm = function(y, x, alpha, approach)
+* The linreg function appears in the format:  my_lm = function(y, x, alpha, approach)
 
-After attaching the dataset, the user would first state the sample size, then set up the y and x values:
+* After attaching the dataset, the user would first state the sample size, then set up the y and x values as follows: 
 
-
-n<-517
-y<-forestfires$Y
-x<-forestfires[,c("X","DC")]
-
-
-Next they would select the alpha value:
-
->alpha<-0.05
-
-and then type whether they want a "bootstrap" or "asymptotic"
-approach. 
-
->"bootstrap"
-
-The resulting code should look like: 
-
+```console
 >n<-517
+>y<-forestfires$Y
+>x<-forestfires[,c("X","DC")]
+```
 
+* Next they would select the alpha value:
+
+```console
+>alpha<-0.05
+```
+
+* and then type whether they want a "bootstrap" or "asymptotic"
+approach: 
+
+```console
+>"bootstrap"
+```
+
+* The resulting code should look like: 
+
+```console
+>n<-517
 >my_lm (forestfires$Y, forestfires[,c("X"."DC")]), 0.05, "bootstrap")
+```
 
-This will return the aforementioned values in the output and the graphs in the plots window. 
+* This will return the aforementioned values in the output and will create the graphs in the plot window. 
+
+</br>
 
 
 
