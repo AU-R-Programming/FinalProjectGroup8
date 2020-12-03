@@ -195,10 +195,25 @@ summary {
 <h2>How to Use the Function</h2>
 <p>We are using an example dataset which can be downloaded from our R package called forestfires.csv.</p>
 <p>The linreg function appears in the format: my_lm = function(y, x, alpha, approach)</p>
-<p>After attaching the dataset, the user would first state the sample size (n=517), then set up the y and x values:</p>
-<p>CODE HERE</p>
-<p>and then select an alpha value, such as 0.05 and then type whether they want a &quot;bootstrap&quot; or &quot;asymptotic&quot; approach.</p>
-<p>The resuling code should look like:</p>
+<p>After attaching the dataset, the user would first state the sample size, then set up the y and x values:</p>
+<blockquote>
+<p>n&lt;-517 y&lt;-forestfires$Y x&lt;-forestfires[,c(&quot;X&quot;,&quot;DC&quot;)]</p>
+</blockquote>
+<p>Next they would select the alpha value:</p>
+<blockquote>
+<p>alpha&lt;-0.05</p>
+</blockquote>
+<p>and then type whether they want a &quot;bootstrap&quot; or &quot;asymptotic&quot; approach.</p>
+<blockquote>
+<p>&quot;bootstrap&quot;</p>
+</blockquote>
+<p>The resulting code should look like:</p>
+<blockquote>
+<p>n&lt;-517</p>
+</blockquote>
+<blockquote>
+<p>my_lm (forestfires$Y, forestfires[,c(&quot;X&quot;.&quot;DC&quot;)]), 0.05, &quot;bootstrap&quot;)</p>
+</blockquote>
 <p>This will return the aforementioned values in the output and the graphs in the plots window.</p>
 </div>
 
