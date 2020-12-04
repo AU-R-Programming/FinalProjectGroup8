@@ -24,16 +24,17 @@ ui <- fluidPage(
 
         sidebarPanel(
             sliderInput("alpha", "Value for alpha: ", min = 0, max = 1, value = .5),
-            textInput("approach", "Select approach (asymptotic or bootstrap): ", "asymptotic"),
-            actionButton("button", "Compute linear regression")
+            selectInput("approach", "Select approach (asymptotic or bootstrap): ",list("bootstrap",
+                        "asymptotic")),
+            actionButton("button", "Compute confidence intervals")
         ),
 
         # Show a plot of the generated distribution
         mainPanel(
             tabsetPanel(
+             tabPanel("Confidence Intervals", tableOutput("table")),
              tabPanel("Resid vs Fitted", plotOutput("mpgPlot")),
-             tabPanel("qq Plot", plotOutput("mpgQq")),
-             tabPanel("Summary table", tableOutput("table"))
+             tabPanel("qq Plot", plotOutput("mpgQq"))
             )
 
     )
@@ -69,6 +70,17 @@ densi<-density(resid)
 # Define server logic required to draw a histogram
 server <- function(input, output) {
 
+    a = eventReactive(input$button, {
+        my_lm(y = mpgData$mpg, x = mpgData[,c("cyl","disp","hp","drat","wt","qsec","gear")],
+              alpha = input$alpha, approach = input$approach)
+
+
+
+    })
+
+
+    output$table = renderTable(a()$ci, rownames = TRUE,
+                               colnames = TRUE)
 
        output$mpgPlot = renderPlot({
 
@@ -76,7 +88,8 @@ server <- function(input, output) {
                geom_point(
                    data = mpgData,
                    aes(z,resid),
-                   size = 5, colour = "black")
+                   size = 5, colour = "black")+
+               ggtitle("Residual vs Fitted values")
 
        })
 
@@ -86,23 +99,10 @@ server <- function(input, output) {
                geom_point(
                    data = mpgData,
                    aes(y.hat,resid),
-                   size = 5, colour = "black")
+                   size = 5, colour = "black")+
+               ggtitle("qq-plot of Residuals")
 
        })
-
-       a = eventReactive(input$button, {
-           my_lm(y = mpgData$mpg, x = mpgData[,c("cyl","disp","hp","drat","wt","qsec","gear")],
-                 alpha = input$alpha, approach = input$approach)
-
-
-
-       })
-
-
-       output$table = renderTable(a()$ci, rownames = TRUE,
-                                  colnames = TRUE)
-
-
 
 }
 
