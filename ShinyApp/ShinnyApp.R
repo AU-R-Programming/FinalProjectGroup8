@@ -90,11 +90,19 @@ server <- function(input, output) {
 
        })
 
-       a <- eventReactive(input$button, {
+       a = eventReactive(input$button, {
            my_lm(y = mpgData$mpg, x = mpgData[,c("cyl","disp","hp","drat","wt","qsec","gear")],
                  alpha = input$alpha, approach = input$approach)
 
+
+
        })
+
+
+       output$table = renderTable(a()$ci, rownames = TRUE,
+                                  colnames = TRUE)
+
+
 
 }
 
