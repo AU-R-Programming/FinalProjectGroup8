@@ -11,15 +11,14 @@ knitr::opts_chunk$set(echo = TRUE)
 
 ## What Does the Linreg function do?
 
-* The linreg function can be found in the GitHub repository AU-R-Programming/FinalProjectGroup8
+* The linreg function can be found in the GitHub repository: AU-R-Programming/FinalProjectGroup8
 
-* The function appears as my_lm in the R code file and is accompanied by a help file:
-my_lm = function(y, x, alpha, approach) which can be accessed by any user.
+* The function appears as my_lm in the R code file and is accompanied by a help file which can be accessed by any user.
 
 * This function allows the user to perform a linear regression with their own data. The user can select an alpha value and whether to use a bootstrap or asymptotic approach. 
 
 * The function returns the confidence intervals for beta, a Mean Square Prediction Error (MPSE) in matrix form, 
-an F-test and p-value. In addition the function outputs plots for the residual vs. fitted values, a qq-plot of residuals and a histogram (density) of the residuals. 
+an F-test and p-value. In addition, the function outputs plots for the residual vs. fitted values, a qq-plot of residuals and a histogram (density) of the residuals. 
 
 ## How do you use the Function?
 
@@ -27,7 +26,7 @@ an F-test and p-value. In addition the function outputs plots for the residual v
 
 * The linreg function appears in the format:  my_lm = function(y, x, alpha, approach)
 
-* After attaching the dataset,Using the forest fires dataset example,  the user would set up the y and x values as follows: 
+* After attaching the dataset using the forest fires dataset example, the user would set up the y and x values as follows: 
 
 ```console
 y<-forestfires$Y
@@ -47,10 +46,10 @@ approach:
 "bootstrap"
 ```
 
-* The resulting code should look like: 
+* The resulting code should appear as: 
 
 ```console
-my_lm (forestfires$Y, forestfires[,c("X"."DC")]), 0.05, "bootstrap")
+my_lm (forestfires$Y, forestfires[,c("X","DC")]), 0.05, "bootstrap")
 ```
 
 * This will return the aforementioned values in the output and will create the graphs in the plot window. 
